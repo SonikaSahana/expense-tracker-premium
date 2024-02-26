@@ -1,5 +1,5 @@
 const axiosReportInstance = axios.create({
-    baseURL : 'http://localhost:4000/report',
+    baseURL : 'http://3.25.113.52:4000/report',
     headers : {
         'auth-token' : localStorage.getItem('token')
     }

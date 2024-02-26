@@ -13,10 +13,9 @@ const sequelize = require('../util/db');
 
 
 var rzp = new Razorpay({
- // key_id: process.env.RAZORPAY_KEY_ID,
- //key_secret: process.env.RAZORPAY_KEY_SECRET
- key_id: "rzp_test_wmoM19zvZT2GIR",
-key_secret: "ZkQd9XfdzYGFrDn4mnwNap0L"
+  key_id: process.env.RAZORPAY_KEY_ID,
+ key_secret: process.env.RAZORPAY_KEY_SECRET
+
 });
 
 
@@ -56,7 +55,7 @@ exports.purchaseMembership = async (req, res) => {
         order.status = "SUCCESSFUL"
         req.user.isPremiumUser = true
         await req.user.save();
-        const token = jwt.sign({id : req.user.id , isPremiumUser : true} , "ff1234ff123")
+        const token = jwt.sign({id : req.user.id , isPremiumUser : true} , process.env.JWT_TOKEN)
         await order.save()
         return res.json({ success: true, msg: "payment complete", token ,isPremiumUser : true})
       }else{
@@ -108,7 +107,7 @@ exports.successfullTransaction = async (req, res) => {
           await req.user.update({isPremiumUser : true} , {
             transaction:t
           })
-          const token = jwt.sign({id : req.user.id , isPremiumUser : true} , "ff1234ff123")
+          const token = jwt.sign({id : req.user.id , isPremiumUser : true} , process.env.JWT_TOKEN)
           await t.commit()
           return res.json({ success: true, msg: "payment complete", token ,isPremiumUser : true})
         } else {
