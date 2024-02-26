@@ -1,0 +1,67 @@
+body{
+    background-color: color-mix(in oklab, blue 25%, green 30%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.login-display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    border: 0.8rem solid #b78989;
+    padding: 2rem;
+    background-color: color-mix(in oklab, #7c3f3f 15%, #ffffff 49%);
+}
+.login-display button{
+    
+
+    width: 6rem;
+    /* margin: 0 4rem; */
+    box-sizing: border-box;
+    padding: 0.8rem 0.4rem;
+    background-color: color-mix(in oklab, #7c3f3f 15%, #baaaa6 49%);
+    border-radius: 0.4rem;
+    margin: 0 6rem;
+}
+
+
+
+.email label{
+    margin-left: 2rem;
+}
+label{
+    font-size: large;
+    margin: 0.5rem;
+}
+
+input{
+    padding: 0.4rem;
+    width: 21rem;
+    border-radius: 0.4rem;
+    font-size: medium;
+    margin: 0.5rem;
+}
+
+.login-display >button{
+    width: fit-content;
+}
+
+.login-display a {
+    font-size: larger;
+    text-decoration: none;
+
+    &:hover{
+        color: rgb(215, 14, 88);
+    }
+}
+
+h2{
+    font-size: 2rem;
+}
+
+#forgot-password{
+    min-width: max-content;
+}

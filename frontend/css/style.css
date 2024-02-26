@@ -1,0 +1,25 @@
+span{
+    margin : 5px;
+}
+
+button{
+    margin: 5px;
+}
+
+
+
+header > div{
+    display: flex;
+    justify-content: flex-start;
+}
+
+#logout{
+    margin-left: auto;
+}
+
+.hide{
+    display: none;
+}
+#curr{
+    padding: 10px;
+}
