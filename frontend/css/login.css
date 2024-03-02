@@ -47,6 +47,7 @@ input{
 
 .login-display >button{
     width: fit-content;
+    background-color:linear-gradient(135deg, #71b7e6, #9b59b6);
 }
 
 .login-display a {
