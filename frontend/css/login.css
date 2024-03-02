@@ -22,7 +22,7 @@ body{
     /* margin: 0 4rem; */
     box-sizing: border-box;
     padding: 0.8rem 0.4rem;
-    color:linear-gradient(135deg, #71b7e6, #9b59b6);
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     border-radius: 0.4rem;
     margin: 0 6rem;
 }
