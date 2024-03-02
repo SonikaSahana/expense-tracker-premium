@@ -1,5 +1,5 @@
 body{
-    background-color: color-mix(in oklab, blue 25%, green 30%);
+    background:linear-gradient(135deg, #71b7e6, #9b59b6);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,9 +11,9 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-    border: 0.8rem solid #b78989;
+    border: 0.8rem solid #a389b7;
     padding: 2rem;
-    background-color: color-mix(in oklab, #7c3f3f 15%, #ffffff 49%);
+    background-color: whitesmoke;
 }
 .login-display button{
     
@@ -22,7 +22,7 @@ body{
     /* margin: 0 4rem; */
     box-sizing: border-box;
     padding: 0.8rem 0.4rem;
-    background-color: color-mix(in oklab, #7c3f3f 15%, #baaaa6 49%);
+    background-color:linear-gradient(135deg, #71b7e6, #9b59b6);
     border-radius: 0.4rem;
     margin: 0 6rem;
 }
