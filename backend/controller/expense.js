@@ -97,9 +97,9 @@ exports.downloadExpenses = async(req,res)=>{
         const expenses = await req.user.getExpenses();
         const expensesToString = JSON.stringify(expenses)
         const fileName = `expense${req.user.id}/${new Date()}.txt`
-        // TODO: Fix AWS code // Upload to s3 is failing
         const fileUrl = await S3Services.uploadToS3(expensesToString , fileName);
         let url = fileUrl.Location
+        console.log("Print ****",req)
         await req.user.createDownload({url : url})
         return res.json({fileUrl  :fileUrl.Location , success : true})
     }catch(e){
