@@ -99,7 +99,6 @@ exports.downloadExpenses = async(req,res)=>{
         const fileName = `expense${req.user.id}/${new Date()}.txt`
         const fileUrl = await S3Services.uploadToS3(expensesToString , fileName);
         let url = fileUrl.Location
-        console.log("Print ****",req)
         await req.user.createDownload({url : url})
         return res.json({fileUrl  :fileUrl.Location , success : true})
     }catch(e){
