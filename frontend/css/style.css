@@ -1,6 +1,6 @@
 /* CSS for nav */
 nav {
-    background-color: #333;
+    background-color: #409aa4;
     padding: 10px;
     text-align: center;
 }
@@ -12,7 +12,7 @@ nav a {
 
 /* CSS for header */
 header {
-    background-color: #f0f0f0;
+    background-color:linear-gradient(-135deg, #71b7e6, #9b59b6);
     padding: 20px;
     text-align: center;
 }
@@ -28,8 +28,15 @@ header button {
 }
 
 .choose-expense form {
-    display: flex;
-    flex-direction: column;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        border: 0.8rem solid #a389b7;
+        padding: 2rem;
+        background-color: whitesmoke;
+    
 }
 
 .choose-expense label {
@@ -47,7 +54,13 @@ margin: 0.5rem;
 
 }
 .choose-expense button {
-    margin-bottom: 10px;
+    width: 6rem;
+    /* margin: 0 4rem; */
+    box-sizing: border-box;
+    padding: 0.8rem 0.4rem;
+    background: linear-gradient(-135deg, #71b7e6, #9b59b6);
+    border-radius: 0.4rem;
+    margin: 0 6rem;
 }
 
 /* CSS for display */
