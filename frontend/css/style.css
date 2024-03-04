@@ -4,14 +4,14 @@ span{
 }
 
 button{
-    margin: 5px;
+    /* margin: 5px; */
     width: 6rem;
     /* margin: 0 4rem; */
     box-sizing: border-box;
-    padding: 0.8rem 0.4rem;
     background:#71b7e6;
-    border-radius: 0.4rem;
-    margin: 0 6rem;
+    border-radius: 0.2rem;
+    margin: 0.6rem;
+    size: 5px;
 }
 body{
     background:linear-gradient(135deg, #71b7e6, #9b59b6);
@@ -21,6 +21,7 @@ body{
 header > div{
     display: flex;
     justify-content: flex-start;
+    text-size-adjust: ;
     
 }
 
