@@ -24,7 +24,7 @@ header button {
 /* CSS for choose-expense */
 .choose-expense {
     margin: 20px auto;
-    width: 80%;
+    width:40%;
 }
 
 .choose-expense form {
@@ -33,11 +33,19 @@ header button {
 }
 
 .choose-expense label {
-    margin-bottom: 5px;
+    font-size: large;
+    margin: 0.5rem;
 }
 
-.choose-expense input,
-.choose-expense select,
+.choose-expense input
+.choose-expense select{
+padding: 0.4rem;
+width: 21rem;
+border-radius: 0.4rem;
+font-size: medium;
+margin: 0.5rem;
+
+}
 .choose-expense button {
     margin-bottom: 10px;
 }
