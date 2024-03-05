@@ -39,13 +39,14 @@ header > div{
     
 }
 .choose-expense button{
-    width: 6rem;
+    /* width: 6rem; */
     /* margin: 0 4rem; */
     box-sizing: border-box;
     padding: 0.8rem 0.4rem;
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     border-radius: 0.4rem;
-    margin: 0 6rem;
+    size: 5px;
+    display: flex;
 }
 .page {
     margin: 20px auto;
@@ -61,13 +62,15 @@ header > div{
     margin: 20px auto;
     text-align: center;
 }
-/* #download-expense {
+
+/* CSS for download-expense */
+#download-expense {
     display: block;
     margin: 20px auto;
 }
 
 /* CSS for download-urls */
-/* #download-urls {
+#download-urls {
     margin: 20px auto;
     text-align: center;
 }
@@ -80,8 +83,3 @@ header > div{
 #download-urls h3 {
     margin-bottom: 10px;
 }
-
-/* CSS for hide class */
-/* .hide {
-    display: none;
-} */ 
