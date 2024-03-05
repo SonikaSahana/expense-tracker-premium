@@ -11,7 +11,7 @@ function uploadToS3(data , fileName){
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: fileName,
         Body: data,
-        ContentType: 'text/xml',
+        ContentType: 'text/html',
        // ACL: 'public-read'
     };
 
