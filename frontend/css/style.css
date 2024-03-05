@@ -40,13 +40,13 @@ header > div{
 }
 .choose-expense button{
     /* width: 6rem; */
-    /* margin: 0 4rem; */
+    margin: 0 4rem; 
     box-sizing: border-box;
     padding: 0.8rem 0.4rem;
     background: linear-gradient(-135deg, #71b7e6, #9b59b6);
     border-radius: 0.4rem;
-    size: 5px;
-    display: flex;
+    size: 4px;
+
 }
 .page {
     margin: 20px auto;
