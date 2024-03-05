@@ -61,3 +61,27 @@ header > div{
     margin: 20px auto;
     text-align: center;
 }
+#download-expense {
+    display: block;
+    margin: 20px auto;
+}
+
+/* CSS for download-urls */
+#download-urls {
+    margin: 20px auto;
+    text-align: center;
+}
+
+#download-urls ul {
+    list-style: none;
+    padding: 0;
+}
+
+#download-urls h3 {
+    margin-bottom: 10px;
+}
+
+/* CSS for hide class */
+.hide {
+    display: none;
+}
