@@ -3,7 +3,7 @@ let ul = document.querySelector(".display ul")
 //     rejectUnauthorized: false
 // })
 const axiosInstance = axios.create({
-    baseURL: "http://3.25.113.52:4000/expense",
+    baseURL: "http://localhost:4000/expense",
     headers : {
         'auth-token' : localStorage.getItem('token')
     }
@@ -15,15 +15,11 @@ const axiosInstance = axios.create({
 
 document.querySelector(".choose-expense form").addEventListener('submit', saveDetails);
 window.addEventListener('load',()=>{
-    
     renderElements()
     showDownloadUrls()
 } 
 )
 ul.addEventListener('click', handleClick)
-
-
-
 
 var next = null;
 var id = null;
@@ -73,12 +69,13 @@ async function saveDetails(e) {
 }
 
 async function renderElements() {
+    // load login.html page when user opens app server endpoint
     if (localStorage.getItem('token') == undefined)
         window.location = "/login.html"
 
         console.log(localStorage.getItem("isPremiumUser"))
 
-    let res = await axios.get('http://3.25.113.52:4000/premium/checkPremium',{
+    let res = await axios.get('http://localhost:4000/premium/checkPremium',{
         headers : {
             "auth-token" : localStorage.getItem('token')
         },
@@ -86,18 +83,19 @@ async function renderElements() {
         //     rejectUnauthorized: false
         // })
     })
+
+    // check response status
     if(res.status == 200){
         console.log(res.status)
         localStorage.setItem('isPremiumUser' , res.data)
-
     }
+
     if (localStorage.getItem("isPremiumUser") == "true") {
         document.getElementById('premium-user').classList.remove('hide')
         document.getElementById('showleaderboard').classList.remove('hide')
         document.getElementById('premium').classList.add('hide')
     }
 
-    // axiosInstance.setHeaders({});
     const ITEMS_PER_PAGE = +localStorage.getItem('totalItems') || 5
     console.log(ITEMS_PER_PAGE)
     document.getElementById('display-expenses').value = ITEMS_PER_PAGE 
@@ -107,13 +105,10 @@ async function renderElements() {
         document.getElementById('next').classList.add('hide')
     }else{
         document.getElementById('next').classList.remove('hide')
-
     }
     let users = result.data.expenses;
     ul.innerHTML = ``
     users.forEach((value) => {
-
-
         let li = display(value)
         ul.appendChild(li)
     })
@@ -137,11 +132,11 @@ function display(data) {
     let del = document.createElement('button')
     del.appendChild(document.createTextNode("Delete expense"))
     del.classList.add('delete')
-    del.id = data.id
+    del.id = data._id
     let edit = document.createElement('button')
     edit.appendChild(document.createTextNode("Edit expense"))
     edit.classList.add('edit')
-    edit.id = data.id
+    edit.id = data._id
     li.appendChild(del)
     li.appendChild(edit)
     return li;
@@ -187,7 +182,7 @@ async function purchaseMembeship(e) {
 
     try {
 
-        const response = await axios.post('http://3.25.113.52:4000/payment/purchasemembership', null, {
+        const response = await axios.post('http://localhost:4000/payment/purchasemembership', null, {
             headers: {
                 "auth-token": localStorage.getItem('token')
             },
@@ -209,7 +204,7 @@ async function purchaseMembeship(e) {
 
             "order_id": response.data.order_id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
             "handler": async function (response) {
-                const res = await axios.post("http://3.25.113.52:4000/payment/success", {
+                const res = await axios.post("http://localhost:4000/payment/success", {
 
                     "payment_id": response.razorpay_payment_id,
                     "razorpay_signature": response.razorpay_signature
@@ -234,7 +229,7 @@ async function purchaseMembeship(e) {
         }
         var rzp1 = new Razorpay(options);
         // rzp1.on('payment.external', async function () {
-        //     const res = await axios.get("http://3.25.113.52:4000/payment/external", {
+        //     const res = await axios.get("http://localhost:4000/payment/external", {
         //     headers: {
         //         "auth-token": localStorage.getItem('token')
         //     }
@@ -242,9 +237,9 @@ async function purchaseMembeship(e) {
         // console.log(res)
         //   });
         rzp1.on('payment.failed', async function (response) {
-            alert('failded')
+            alert('failed')
             console.log(response.error)
-            const res = await axios.post("http://3.25.113.52:4000/payment/failed", {
+            const res = await axios.post("http://localhost:4000/payment/failed", {
 
                 "payment_id": response.error.metadata.payment_id
 
@@ -267,22 +262,19 @@ async function purchaseMembeship(e) {
 
 document.getElementById("showleaderboard").addEventListener('click', async()=>{
     try{
-        const res = await axios.get('http://3.25.113.52:4000/premium/showleaderboard',{
+        const res = await axios.get('http://localhost:4000/premium/showleaderboard',{
             headers :{
                 "auth-token": localStorage.getItem('token')
             }
-            
         })
-        // if(res.)
+
         if(res.status == 200){
             console.log(res.data)
             const leaderboard = document.querySelector('#leaderboard ul')
             console.log(leaderboard)
             leaderboard.innerHTML = ``
             res.data.forEach(user =>{
-
                 const li = document.createElement('li')
-
                 li.textContent = `Name : ${user.name} Total Expenses :${user.totalAmount}`
                 leaderboard.appendChild(li)
             })
@@ -291,27 +283,22 @@ document.getElementById("showleaderboard").addEventListener('click', async()=>{
         }
     }catch(e){
         console.log(e)
-        
     }
 })
 
 
 document.getElementById('download-expense').addEventListener('click' , async()=>{
     console.log('click')
-
     try{
         const result = await axiosInstance.get('/download')
-
-        const a = document.createElement('a')
-        a.href = result.data.fileUrl
-        a.download = 'myexpense.txt'
-        
-        a.click()
-
+            const a = document.createElement('a')
+            a.href = result.data.fileUrl
+            a.download = 'myexpense.txt'
+            a.click()
+            //window.location = "/"
     }catch(e){
         console.log(e)
     }
-
 })
 
 
