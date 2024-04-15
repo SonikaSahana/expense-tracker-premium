@@ -11,6 +11,7 @@ function uploadToS3(data , fileName){
         Bucket: process.env.AWS_BUCKET_NAME,
         Key: fileName,
         Body: data,
+       // ACL: 'public-read'
     };
 
     return new Promise((resolve , reject)=>{

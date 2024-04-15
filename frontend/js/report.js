@@ -1,5 +1,5 @@
 const axiosReportInstance = axios.create({
-    baseURL : 'http://localhost:4000/report',
+    baseURL : 'http://3.25.113.52:4000/report',
     headers : {
         'auth-token' : localStorage.getItem('token')
     }
@@ -50,9 +50,6 @@ document.getElementById('daily-form').addEventListener('submit' , async(e)=>{
             }
         } )
         console.log(res)
-        if (res.status == 403){
-            alert("you are not a premimum user")
-        }
         document.getElementById('daily').classList.remove('hide')
         document.getElementById('monthly').classList.add('hide')
         document.getElementById('yearly').classList.add('hide')

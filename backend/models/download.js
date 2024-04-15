@@ -1,20 +1,18 @@
-const mongoose = require('mongoose');
-const autoIncrement = require('mongoose-sequence')(mongoose);
+const Sequelize = require('sequelize')
 
-const DownloadSchema = new mongoose.Schema({
-  user_id: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
-    required: true
-  },
-  url: {
-    type: String,
-    required: true
-  },
-});
+const sequelize = require('../util/db')
 
-// Apply the plugin to the schema
-//DownloadSchema.plugin(autoIncrement, { inc_field: 'id', id: 'download_id_' });
-const Download = mongoose.model('download', DownloadSchema);
+const Download = sequelize.define('download',{
+    id:{
+        type : Sequelize.INTEGER,
+        primaryKey : true,
+        autoIncrement : true,
+        allowNull : false
+    },
+    url : {
+        type : Sequelize.STRING,
+        allowNull : false
+    }
+})
 
 module.exports = Download;
