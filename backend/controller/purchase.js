@@ -59,9 +59,9 @@ exports.purchaseMembership = async (req, res) => {
         await order.save()
         return res.json({ success: true, msg: "payment complete", token ,isPremiumUser : true})
       }else{
-        
-        await order.save()
+
         order.status = "FAILED"
+        await order.save()
         return res.json({ success: false, msg: "payment failed",isPremiumUser : false })
 
       }

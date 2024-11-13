@@ -76,9 +76,11 @@ exports.editExpense = (req, res) => {
 
 exports.getExpenses = async (req, res) => {
     try {
+        // +req.query.page converts the string value of req.query.page to a number.
         const page = +req.query.page || 1
         const items = +req.body.items || 5
         console.log(items)
+        console.log(req.user)
         const exp =  req.user.getExpenses({
             offset: (page - 1) * items,
             limit: items
@@ -92,6 +94,8 @@ exports.getExpenses = async (req, res) => {
     }
 }
 
+// get all the expnse data for the user and upload it to S3 bucket
+// once upload is successful insert the s3 url to download table
 exports.downloadExpenses = async(req,res)=>{
     try{
         const expenses = await req.user.getExpenses();

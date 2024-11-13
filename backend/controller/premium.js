@@ -8,21 +8,17 @@ const User = require('../models/user')
 
 exports.checkPremium = async(req ,res)=>{
     try{
-
         const result = await req.user.isPremiumUser;
         return res.json(result)
     }catch(e){
         console.log(e)
         return res.status(500).json({success : false , msg :"Internal server error"})
-    
     }
 }
 
 
 exports.showLeaderBoard = async(req,res)=>{
     try{
-        // return res.json(req.user)
-        console.log("print***********",req)
         if(req.user.isPremiumUser){
 
         

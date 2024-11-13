@@ -32,14 +32,17 @@ exports.login = async (req ,res)=>{
     try{
         const email = req.body.email;
         const password = req.body.password;
+        // verify email from users table
         const user = await User.findOne({where : {email : email}})
         
- 
+        // return 401 (unauthorized user code) and signup message
+        // as user doesn't exist in the users table
         if(user === null){
-
             return res.status(401).json({success : false , msg : "please signup, you are not a memeber"})
         }
-
+        
+        // since user is not null, that means user exist
+        // verify the password
         const result = await bcrypt.compare(password ,user.password)
         if(result){
             // if password is valid, create a jwt 

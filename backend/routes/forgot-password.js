@@ -42,7 +42,7 @@ router.post('/forgot-password' , async(req,res)=>{
             to : reciever,
             subject : 'Reset password for Expense Tracker App',
             htmlContent: '<p>Click the link to reset your password</p>'+
-            `<a href="http://3.25.113.52:4000/reset-password.html?reset=${link.id}">click here</a>`,
+            `<a href="http://localhost:4000/reset-password.html?reset=${link.id}">click here</a>`,
         })
         return res.json({success : true ,link})
     }catch(e){
